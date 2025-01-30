@@ -1,0 +1,29 @@
+replicaCount: 2
+
+image:
+  repository: my-docker-hub-user/my-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5000
+  targetPort: 5000
+
+env: {}
+envFromSecret:
+  - my-app-secret
+envFromConfigmap:
+  - my-app-config
+
+ingress:
+  enabled: false
+
+secret:
+  SECRET_KEY: "mysecret"
+  DB_PASSWORD: "mydbpassword"
+
+config:
+  API_BASE_URL: "https://api.mytomorrow.com"
+  LOG_LEVEL: "debug"
+  MAX_CONNECTIONS: "10"
