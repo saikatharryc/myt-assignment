@@ -13,6 +13,13 @@ module "nginx-ingress" {
   cluster_sa_token       = data.external.kubeconfig.result["token"]
 }
 
+module "monitoring" {
+  source                 = "./modules/monitoring"
+  cluster_endpoint       = data.external.kubeconfig.result["endpoint"]
+  cluster_ca_certificate = base64decode(data.external.kubeconfig.result["ca_cert"])
+  cluster_sa_token       = data.external.kubeconfig.result["token"]
+}
+
 
 
 ## Each of the app can have its own set of modules
