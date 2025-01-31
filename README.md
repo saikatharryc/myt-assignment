@@ -1,5 +1,8 @@
 # DevOps Assignment
 
+# [Docs for Solution Click Here:::::>>](https://github.com/saikatharryc/myt-assignment/tree/main/terraform-sol#how-to-use-navigate-this-repository)
+
+
 ## Objective
 
 The goal of this assignment is to evaluate your understanding of key infrastructure concepts. We aim to gauge how you approach problem-solving and implement solutions while considering modern technology constraints such as scalability, availability, security, resilience, and fault-tolerance. This assignment encourages you to implement solutions based on your preferred approach and provide justification for your choices.
