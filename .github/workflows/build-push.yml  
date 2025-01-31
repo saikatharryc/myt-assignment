@@ -1,14 +1,12 @@
 name: build-docker-image
-
 on:
   push:
     tags:
       - 'v*'
-
 env:
   REGISTRY: ghcr.io/saikatharryc
   IMAGE_NAME: py-test-app
-
+  
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
