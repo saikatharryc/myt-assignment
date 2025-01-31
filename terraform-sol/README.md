@@ -1,3 +1,3 @@
-### Deploying Sample Python APP with IaC
+## Deploying Sample Python APP with IaC
 
-## How to use navigate this repository
+### How to use navigate this repository
