@@ -1,7 +1,8 @@
 FROM python:3.10-slim
 
-RUN addgroup -g 65532 noroot && \
-    adduser -u 65532 -G noroot -s /bin/sh -D noroot
+RUN apt-get update && apt-get install -y sudo && apt-get clean
+RUN addgroup --system noroot && \
+    adduser --system --ingroup noroot --shell /bin/sh --disabled-password noroot
 
 WORKDIR /app
 
