@@ -2,6 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app
+  annotations:
+    {{- if .Values.annotations }}
+    {{- range $key, $value := .Values.annotations }}
+    {{ $key }}: {{ $value }}
+    {{- end }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -12,6 +18,22 @@ spec:
       labels:
         app: my-app
     spec:
+      # security considerations
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 2000
+        runAsUser: 1000
+
+      tolerations:
+        {{- if .Values.tolerations }}
+        {{- range .Values.tolerations }}
+        - key: {{ .key }}
+          operator: {{ .operator }}
+          value: {{ .value }}
+          effect: {{ .effect }}
+        {{- end }}
+        {{- end }}
+      
       containers:
         - name: my-app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -34,6 +56,16 @@ spec:
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
+
+          # Resources block
+          resources:
+            requests:
+              memory: "{{ .Values.resources.requests.memory }}"
+              cpu: "{{ .Values.resources.requests.cpu }}"
+            limits:
+              memory: "{{ .Values.resources.limits.memory }}"
+              cpu: "{{ .Values.resources.limits.cpu }}"
+          
           envFrom:
             {{- if .Values.envFromSecret }}
             {{- range .Values.envFromSecret }}
@@ -48,34 +80,6 @@ spec:
             {{- end }}
             {{- end }}
           env:
-            # # Load values from Secret
-            # - name: SECRET_KEY
-            #   valueFrom:
-            #   secretKeyRef:
-            #     name: my-app-secret
-            #     key: SECRET_KEY
-            # - name: DB_PASSWORD
-            #   valueFrom:
-            #   secretKeyRef:
-            #     name: my-app-secret
-            #     key: DB_PASSWORD
-
-            # # Load values from ConfigMap
-            # - name: API_BASE_URL
-            #   valueFrom:
-            #   configMapKeyRef:
-            #     name: my-app-config
-            #     key: API_BASE_URL
-            # - name: LOG_LEVEL
-            #   valueFrom:
-            #   configMapKeyRef:
-            #     name: my-app-config
-            #     key: LOG_LEVEL
-            # - name: MAX_CONNECTIONS
-            #   valueFrom:
-            #   configMapKeyRef:
-            #     name: my-app-config
-            #     key: MAX_CONNECTIONS
             {{- if .Values.env }}
             {{- range $key, $value := .Values.env }}
             - name: {{ $key }}

@@ -10,6 +10,23 @@ service:
   port: 5000
   targetPort: 5000
 
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+tolerations:
+  - key: "example-key"
+    operator: "Equal"
+    value: "example-value"
+    effect: "NoExecute"
+
+annotations:
+  example-annotation: "value"
+
 env: {}
 envFromSecret:
   - my-app-secret
