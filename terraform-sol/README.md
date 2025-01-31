@@ -138,3 +138,9 @@ Among many i feel having considering only above 5 points could bring the set up 
 for an actual production there may be more consideration to make both secret management/ security hardening, adding Pod Security policies and so many other things among having standard and stable chart and easier & defined process for emergency rollbacks etc.
 
 
+
+
+https://github.com/user-attachments/assets/91cfda19-0e65-4651-87b6-3d70b3cc0237
+
+
+
