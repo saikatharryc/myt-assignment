@@ -71,3 +71,15 @@ variable "annotations" {
   type        = map(string)
   default     = {}
 }
+
+variable "release_version" {
+  description = "The version of the Helm chart to deploy."
+  type        = string
+  default     = "latest"
+}
+
+variable "replica_count" {
+  description = "The number of replicas for the app"
+  type        = string
+  default     = "1"
+}

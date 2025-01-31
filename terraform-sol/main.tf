@@ -16,4 +16,6 @@ module "my_app" {
   db_password            = var.my_app_secret.db_password
   chart_path             = "../chart"
   release_name           = "my-app"
+  release_version        = var.my_app.release_version
+  replica_count          = var.my_app.replica_count
 }
