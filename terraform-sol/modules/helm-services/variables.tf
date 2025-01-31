@@ -83,3 +83,9 @@ variable "replica_count" {
   type        = string
   default     = "1"
 }
+
+variable "enable_ingress" {
+  description = "Enable ingress for the app"
+  type        = string
+  default     = "false"
+}

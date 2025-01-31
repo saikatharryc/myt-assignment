@@ -35,6 +35,11 @@ resource "helm_release" "app" {
     value = var.replica_count
   }
 
+  set {
+    name  = "ingress.enabled"
+    value = var.enable_ingress
+  }
+
   set_sensitive {
     name  = "secret.SECRET_KEY"
     value = var.secret_key

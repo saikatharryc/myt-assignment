@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
   annotations:
     {{- if .Values.annotations }}
@@ -36,7 +36,7 @@ spec:
         {{- end }}
       
       containers:
-        - name: my-app
+        - name: main
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: {{ .Values.service.targetPort }}

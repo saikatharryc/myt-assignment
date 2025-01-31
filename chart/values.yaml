@@ -35,6 +35,7 @@ envFromConfigmap:
 
 ingress:
   enabled: false
+  host: example.com
 
 secret:
   SECRET_KEY: "mysecret"

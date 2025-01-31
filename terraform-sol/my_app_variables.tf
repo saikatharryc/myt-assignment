@@ -11,6 +11,7 @@ variable "my_app" {
       effect   = string
     })), [])
     annotations = optional(map(string), {})
+    enable_ingress = optional(string, "false")
   })
 }
 

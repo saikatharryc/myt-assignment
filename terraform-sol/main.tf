@@ -18,4 +18,5 @@ module "my_app" {
   release_name           = "my-app"
   release_version        = var.my_app.release_version
   replica_count          = var.my_app.replica_count
+  enable_ingress         = var.my_app.enable_ingress
 }
