@@ -1,23 +1,6 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
-provider "registry.terraform.io/gavinbunney/kubectl" {
-  version     = "1.11.2"
-  constraints = "1.11.2"
-  hashes = [
-    "h1:i1raT0BTtcyvpR8aJhSS0xXiXXBVw1W1xM99tDhdjTY=",
-    "zh:2704e82e97a1fec9e119d197bfee83ef2050d0b1d3aea64517d718bc7c000bb4",
-    "zh:4aec4e54845fb37f93eceb482200e32f3fd0c5c93008d5bd8893bc22322d037e",
-    "zh:4af21a6633d47d672741a369962e5c430b59a145174683de8e7c74dcf893c49c",
-    "zh:52aee101052a31f406a07b7bca3137b8939af222c2e12a25583492db67d912b9",
-    "zh:7dc6e91bc288df6a6345eda384820baa42ac30fd10cad8036e930d3021a36c64",
-    "zh:b4da54afc5722cbf8180794417dee24ba13f89f1c66a8e96bb6ffa9f4f563fe6",
-    "zh:c04f10b5713c5672158c72d761130a83af01982688028f48702d01c91e4c1b43",
-    "zh:cf452160b4af1e92a25b57cb178fcdf3400a0ae29dd7345343e09b8fdb41c148",
-    "zh:e2b928794ac74697b17422984c64771123b85b7cee906d8d4684655590fda91a",
-  ]
-}
-
 provider "registry.terraform.io/hashicorp/external" {
   version = "2.3.4"
   hashes = [

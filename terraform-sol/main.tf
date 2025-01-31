@@ -2,6 +2,19 @@ data "external" "kubeconfig" {
   program = ["./kubeconfig.sh"]
 }
 
+
+## Ideally this has to stay in a seprate repo if we happen to manage the services via TF below way,
+## The reason is we may need to not only have nginx but a lot more stuff, same goes for monitoring components.
+## These are core configs for a cluster and should be managed separately from the service configs which changes way often.
+module "nginx-ingress" {
+  source                 = "./modules/nginx"
+  cluster_endpoint       = data.external.kubeconfig.result["endpoint"]
+  cluster_ca_certificate = base64decode(data.external.kubeconfig.result["ca_cert"])
+  cluster_sa_token       = data.external.kubeconfig.result["token"]
+}
+
+
+
 ## Each of the app can have its own set of modules
 
 module "my_app" {
